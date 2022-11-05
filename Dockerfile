@@ -9,18 +9,13 @@ RUN go mod init build && \
     go build -o /bin/easy-novnc github.com/geek1011/easy-novnc
 
 # Debian
-FROM debian:latest
+FROM debian:stable-slim
 
 # Install novnc
 RUN apt-get update -y && \
     apt-get install -y --no-install-recommends openbox tigervnc-standalone-server supervisor gosu && \
     rm -rf /var/lib/apt/lists && \
     mkdir -p /usr/share/desktop-directories
-
-# Install utils
-RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends ca-certificates xdg-utils && \
-    rm -rf /var/lib/apt/lists
 
 # Install app
 RUN apt-get update -y && \
