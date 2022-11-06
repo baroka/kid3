@@ -19,7 +19,7 @@ RUN apt-get update -y && \
 
 # Install app
 RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends kid3 kid3-cli && \
+    apt-get install -y --no-install-recommends kid3 kid3-cli ca-certificates && \
     rm -rf /var/lib/apt/lists
 
 # Copy files
@@ -36,6 +36,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tz
 RUN echo "$tz" > /etc/timezone
 RUN rm -f /etc/localtime
 RUN dpkg-reconfigure -f noninteractive tzdata
+RUN rm -rf /var/lib/apt/lists
 
 # User
 RUN groupadd --gid 1000 app && \
