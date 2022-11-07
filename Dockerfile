@@ -19,7 +19,7 @@ RUN apt-get update -y && \
 
 # Install app
 RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends kid3 kid3-cli ca-certificates xdg-utils && \
+    apt-get install -y kid3 kid3-cli ca-certificates xdg-utils && \
     rm -rf /var/lib/apt/lists
 
 # Copy files
